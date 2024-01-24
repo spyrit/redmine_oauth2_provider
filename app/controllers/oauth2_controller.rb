@@ -1,6 +1,6 @@
 class Oauth2Controller < ApplicationController 
-  before_filter :require_login, :except => []
-  before_filter :require_admin, :only => [:register_app, :create_app, :del_client]
+  before_action :require_login, :except => []
+  before_action :require_admin, :only => [:register_app, :create_app, :del_client]
 
   def authorize_app
     #http://localhost:3000/oauth2/authorize_client?response_type=token&client_id=js6w22mlf06cv4r4en6ka3ac6d4gm3y&redirect_uri=https://owncloud.reichmann-software.com
