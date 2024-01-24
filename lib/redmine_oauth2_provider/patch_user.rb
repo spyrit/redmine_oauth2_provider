@@ -1,13 +1,14 @@
+module RedmineOauth2Provider::PatchUser
   module RedmineSocialExtends
     module UserExtension
       module ClassMethods
 
       end
-      
+
       module InstanceMethods
 
       end
-      
+
       def self.included(receiver)
         receiver.extend         ClassMethods
         receiver.send :include, InstanceMethods
@@ -19,7 +20,7 @@
         end
       end
     end
-        
+
     module UsersController
       module ClassMethods
 
@@ -28,7 +29,7 @@
       module InstanceMethods
 
       end
-      
+
       def self.included(receiver)
         receiver.extend         ClassMethods
         receiver.send :include, InstanceMethods
@@ -42,8 +43,8 @@
           end
 
 
-          private 
-            
+          private
+
             def verify_access(scope)
               token = Songkick::OAuth2::Provider.access_token(:implicit, [scope.to_s], request)
               user = token.owner
@@ -54,8 +55,9 @@
                 yield user
               end
             end
-        
+
         end
       end
     end
   end
+end

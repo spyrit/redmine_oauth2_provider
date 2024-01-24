@@ -1,5 +1,5 @@
-module RedmineOAuth2
-  module ApplicationController
+module RedmineOauth2Provider
+  module PatchAuth
 
     module InstanceMethods
       def oauth_token_from_request
@@ -21,5 +21,6 @@ module RedmineOAuth2
         alias_method_chain :find_current_user, :oauth
       end
     end
+
   end
 end

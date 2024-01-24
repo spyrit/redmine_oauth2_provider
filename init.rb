@@ -4,12 +4,12 @@ require 'redmine'
 Rails.configuration.to_prepare do
   require_dependency 'user'
   
-  require File.join(File.dirname(__FILE__), 'lib', 'redmine_oauth2_provider', 'patch_user')
-  User.send(:include, ::RedmineSocialExtends::UserExtension)
-  UsersController.send(:include, ::RedmineSocialExtends::UsersController)
+  # require File.join(File.dirname(__FILE__), 'lib', 'redmine_oauth2_provider', 'patch_user')
+  User.send(:include, ::RedmineOauth2Provider::PatchUser::RedmineSocialExtends::UserExtension)
+  UsersController.send(:include, ::RedmineOauth2Provider::PatchUser::RedmineSocialExtends::UsersController)
 
-  require File.join(File.dirname(__FILE__), 'lib', 'redmine_oauth2_provider', 'patch_auth')
-  ApplicationController.send(:include, ::RedmineOAuth2::ApplicationController)
+  # require File.join(File.dirname(__FILE__), 'lib', 'redmine_oauth2_provider', 'patch_auth')
+  ApplicationController.send(:include, ::RedmineOauth2Provider::PatchAuth)
 end
 
 #oauth provider 
