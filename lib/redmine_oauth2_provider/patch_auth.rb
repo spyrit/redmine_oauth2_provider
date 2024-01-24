@@ -18,7 +18,8 @@ module RedmineOauth2Provider
     def self.included(receiver) # :nodoc:
       receiver.send :include, InstanceMethods
       receiver.class_eval do
-        alias_method_chain :find_current_user, :oauth
+        alias_method :find_current_user_without_oauth, :find_current_user
+        alias_method :find_current_user, :find_current_user_with_oauth
       end
     end
 
